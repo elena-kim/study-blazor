@@ -1,1 +1,1 @@
-# study-blazor
+# Blazor
