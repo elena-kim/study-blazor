@@ -1,7 +1,10 @@
 # Blazor
 
+### `Nuget Package`
 - [MudBlazor](#mudblazor)
 - [BlazoredModal](#blazoredmodal)
+
+<br>
 
 ## MudBlazor
 
