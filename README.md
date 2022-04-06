@@ -4,6 +4,9 @@
 - [MudBlazor](#mudblazor)
 - [BlazoredModal](#blazoredmodal)
 
+### `Reference`
+- [Pass Route Parameters between Blazor Pages](#-pass-route-parameters-between-blazor-pages)
+
 <br>
 
 ## MudBlazor
@@ -87,3 +90,12 @@ builder.Services.AddMudServices();
 
 
 ## BlazoredModal
+
+
+<br/>
+
+***
+
+## Reference 
+
+##### - [Pass Route Parameters between Blazor Pages](https://wellsb.com/csharp/aspnet/pass-route-parameters-between-blazor-pages)
