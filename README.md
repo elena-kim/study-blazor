@@ -5,7 +5,7 @@
 - [BlazoredModal](#blazoredmodal)
 
 ### `Reference`
-- [Pass Route Parameters between Blazor Pages](#pass-route-parameters-between-blazor-pages)
+- [Route](#route)
 
 <br>
 
@@ -96,8 +96,8 @@ builder.Services.AddMudServices();
 
 ***
 
-## Reference 
-
-- ##### [Pass Route Parameters between Blazor Pages](https://wellsb.com/csharp/aspnet/pass-route-parameters-between-blazor-pages)
-
+## Route
+- [Pass Route Parameters between Blazor Pages](https://wellsb.com/csharp/aspnet/pass-route-parameters-between-blazor-pages)
+- [ASP.NET Core Blazor 라우팅 및 탐색](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-6.0)
+ 
 <br/>
