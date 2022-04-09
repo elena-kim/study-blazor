@@ -91,7 +91,7 @@ builder.Services.AddMudServices();
 
 ## BlazoredModal
 
-- [BlazoredModal GitHub]
+- [BlazoredModal GitHub](https://github.com/Blazored/Modal)
 
 ## Getting Started
 
