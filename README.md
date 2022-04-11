@@ -32,7 +32,7 @@ dotnet add package MudBlazor
 ```
 
 #### 3. Style 추가
-**`index.html`** 혹은 **`_Layout.cshtml`** / **`_Host.cshtml`** 파일 내 HTML head 부분에 아래 내용을 추가합니다.
+**`index.html`** 혹은 **`_Layout.cshtml`** / **`_Host.cshtml`** 파일의 head 태그 안에 아래 내용을 추가합니다.
 ```html
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
 <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
@@ -43,11 +43,7 @@ dotnet add package MudBlazor
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RazorApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RazorApp.styles.css" asp-append-version="true" />
-    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
+    ...
     
     @*MudBlazor Style Reference*@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
@@ -66,6 +62,7 @@ dotnet add package MudBlazor
 <body>
     ...
     <script src="_framework/blazor.server.js"></script>
+    
     @*MudBlazor Script Reference*@
     <script src="/_content/MudBlazor/MudBlazor.min.js"></script>
 </head> 
@@ -87,7 +84,6 @@ builder.Services.AddMudServices();
 <MudSnackbarProvider/>
 ```
 <br/>
-
 
 ## BlazoredModal
 
@@ -113,7 +109,7 @@ dotnet add package Blazored.Modal
 ```
 
 #### 3. Style 추가
-**`_Layout.cshtml`** 또는 **`_Host.cshtml`** 파일 내 HTML head 부분에 아래 내용을 추가합니다.
+**`_Layout.cshtml`** 또는 **`_Host.cshtml`** 파일의 head 태그 안에 아래 내용을 추가합니다.
 ```html
 <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
 ```
@@ -128,9 +124,6 @@ dotnet add package Blazored.Modal
     
     @*BlazoredModal Style Reference*@
     <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
-    
-    <link href="KRPS_Lab_Blazor.styles.css" rel="stylesheet" />
-    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 ```
 
@@ -145,6 +138,7 @@ dotnet add package Blazored.Modal
 <body>
     ...
     <script src="_framework/blazor.server.js"></script>
+    
     @*BlazoredModal Script Reference*@
     <script src="_content/Blazored.Modal/blazored.modal.js"></script>
 </head> 
@@ -179,6 +173,89 @@ builder.Services.AddBlazoredModal();
 ```
 
 <br/>
+
+## Demo
+
+### Modal
+```cshtml
+@page "/delete"
+
+<style>
+    .blazored-modal{
+        width: 300px;
+        max-height: 185px;
+    }
+    .blazored-modal-title{
+        font-size: 20px;
+        font-weight: bold;
+        margin: 6px 0px 0px -5px;
+    }
+    .blazored-modal-header{
+        padding: 0px 0 0.5rem 0;
+    }
+</style>
+
+<div style="margin: 10px 0px;">
+    <MudText Typo="Typo.subtitle1" Style="font-weight: 600;">삭제하시겠습니까?</MudText>
+    <div style="display: inline-flex; margin-top: 20px;">
+        <MudButton Variant="Variant.Filled" Color="Color.Error" Class="btn-default" OnClick="Delete">삭제</MudButton>
+        <MudButton Variant="Variant.Text" Color="Color.Error" Class="btn-default btn-cancel" OnClick="Cancel">취소</MudButton>
+    </div>
+</div>
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+
+    private void Delete()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok("delete"));
+    }
+
+    private void Cancel()
+    {
+        ModalInstance.CancelAsync();
+    }
+}
+```
+
+### Modal 호출
+Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다.
+
+```cshtml
+@page "/Issue/{id}"
+@inject IModalService Modal 
+@inject CommonService Service
+
+<div>
+    <MudButton Color="Color.Error" Size="Size.Medium" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" 
+               Style="margin-left: 10px;" OnClick="ShowDeleteModal">삭제</MudButton>
+</div>
+  
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        issue = Service.db.Board.Where(x => x.Id.ToString() == Id).FirstOrDefault();
+    }
+
+    async Task ShowDeleteModal()
+    {
+        var options = new ModalOptions(){ DisableBackgroundCancel = true };  // Background 선택 시 Modal Cancel 되는 것 방지
+        var formModal = Modal.Show<DeletePopup>("이슈 삭제", options);
+        var result = await formModal.Result;
+
+        if (result.Data != null)
+        {
+            if (result.Data.ToString() == "delete")
+            {
+                issue.IsDelete = true;
+                issue.UpdatedTime = DateTime.Now;
+                Service.db.SaveChanges();
+            }
+        }
+    }
+}
+```
 
 ***
 
