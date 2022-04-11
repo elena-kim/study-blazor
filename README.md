@@ -91,9 +91,92 @@ builder.Services.AddMudServices();
 
 ## BlazoredModal
 
+![image](https://user-images.githubusercontent.com/74305823/162673011-bbc021e7-914d-48c2-ac87-c373df727981.png)
+
 - [BlazoredModal GitHub](https://github.com/Blazored/Modal)
 
 ## Getting Started
+> Blazor Server 앱 기준
+
+#### 1. 패키지 설치
+Nuget Package Manager에서 `Blazored.Modal` 패키지를 찾아 설치하거나, 아래 명령을 입력해 설치합니다.
+```
+dotnet add package Blazored.Modal
+```
+
+#### 2. Imports 추가
+**`_Imports.razor`** 파일 안에 Blazored.Modal을 추가합니다.
+```cshtml
+@using Blazored  
+@using Blazored.Modal  
+@using Blazored.Modal.Services 
+```
+
+#### 3. Style 추가
+**`_Layout.cshtml`** 또는 **`_Host.cshtml`** 파일 내 HTML head 부분에 아래 내용을 추가합니다.
+```html
+<link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
+```
+
+예시: **`_Layout.cshtml`**
+```html
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="~/" />
+    ...
+    
+    @*BlazoredModal Style Reference*@
+    <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet" />
+    
+    <link href="KRPS_Lab_Blazor.styles.css" rel="stylesheet" />
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+</head>
+```
+
+#### 4. script 추가
+앞서 Style을 추가한 파일과 동일한 파일에 Blazored Modal js file을 추가합니다. Blazor의 기본 스크립트 위치와 동일해야 합니다.
+```html
+<script src="_content/Blazored.Modal/blazored.modal.js"></script>
+```
+
+예시: **`_Layout.cshtml`**
+```html
+<body>
+    ...
+    <script src="_framework/blazor.server.js"></script>
+    @*BlazoredModal Script Reference*@
+    <script src="_content/Blazored.Modal/blazored.modal.js"></script>
+</head> 
+```
+
+#### 5. 서비스 등록
+**`Program.cs`** 파일에 아래 내용을 추가합니다. _(.NET 6 기준)_
+```csharp
+using Blazored.Modal;
+
+builder.Services.AddBlazoredModal();
+```
+
+#### 6. CascadingBlazoredModal 컴포넌트 추가
+**`App.razor`** 파일에 `<CascadingBlazoredModal />` 컴포넌트를 추가합니다.
+
+```cshtml
+<CascadingBlazoredModal>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingBlazoredModal>
+```
 
 <br/>
 
