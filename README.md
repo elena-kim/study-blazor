@@ -7,6 +7,7 @@
 ### `Reference`
 - [Route](#route)
 - [Validation](#validation)
+- [Javascript](#javascript)
 
 <br>
 
@@ -265,7 +266,12 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 - [Pass Route Parameters between Blazor Pages](https://wellsb.com/csharp/aspnet/pass-route-parameters-between-blazor-pages)
 - [ASP.NET Core Blazor 라우팅 및 탐색](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-6.0)
  
+<br>
+
 ## Validation
 - [Blazor form validation](https://www.pragimtech.com/blog/blazor/blazor-form-validation/)
 - [How to use Blazor EditForm for Model Validation](https://executecommands.com/blazor-editform-model-validation-aspnetcore-5/)
  
+<br>
+
+## Javascript
