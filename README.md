@@ -8,6 +8,7 @@
 - [Route](#route)
 - [Validation](#validation)
 - [Javascript](#javascript)
+- [Components](#components)
 
 <br>
 
@@ -276,3 +277,8 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 
 ## Javascript
 - [JavaScript 함수 호출](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/javascript-interoperability/call-javascript-from-dotnet?view=aspnetcore-6.0)
+
+<br>
+
+## Components
+- [Introduction To Templated Components In Blazor](https://www.c-sharpcorner.com/article/introduction-to-templated-components-in-blazor/)
