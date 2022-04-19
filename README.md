@@ -9,6 +9,7 @@
 - [Validation](#validation)
 - [Javascript](#javascript)
 - [Components](#components)
+- [Navigate](#navigate)
 
 <br>
 
@@ -282,3 +283,29 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 
 ## Components
 - [Introduction To Templated Components In Blazor](https://www.c-sharpcorner.com/article/introduction-to-templated-components-in-blazor/)
+
+<br>
+
+## Navigate
+- [Open a page in a new tab](https://docs.microsoft.com/en-us/answers/questions/217767/blazor-open-a-page-in-a-new-browser-tab-using-navi.html)
+
+#### `JSRuntime`
+```razor
+@inject IJSRuntime jsRuntime
+
+<button @onclick="NavigateToNewTab">New Tab Navigation</button>
+
+@code {
+
+    public async Task NavigateToNewTab()
+    {
+        string url = "/counter";
+        await jsRuntime.InvokeAsync<object>("open", url, "_blank");
+    }
+}
+```
+
+#### `'a' tag` 
+```html
+<a href="/counter" target="blank"></a>
+```
