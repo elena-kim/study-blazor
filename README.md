@@ -299,6 +299,7 @@ Go to Page 2
 
 ## Parameter [🔝](#blazor)
 - [Blazor cascading values and parameters](https://www.pragimtech.com/blog/blazor/blazor-cascading-values-parameters/)
+- [ASP.NET Core Blazor 연계 값 및 매개 변수](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/components/cascading-values-and-parameters?view=aspnetcore-6.0)
 
 <br>
 
