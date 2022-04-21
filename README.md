@@ -4,8 +4,9 @@
 - [MudBlazor](#mudblazor)
 - [BlazoredModal](#blazoredmodal-)
 
-### `Reference`
+### `Docs`
 - [Route](#route-)
+- [Parameter](#parameter-)
 - [Validation](#validation-)
 - [Javascript](#javascript-)
 - [Components](#components-)
@@ -296,6 +297,11 @@ Go to Page 2
  
 <br>
 
+## Parameter [🔝](#blazor)
+- [Blazor cascading values and parameters](https://www.pragimtech.com/blog/blazor/blazor-cascading-values-parameters/)
+
+<br>
+
 ## Validation [🔝](#blazor)
 - [Blazor form validation](https://www.pragimtech.com/blog/blazor/blazor-form-validation/)
 - [How to use Blazor EditForm for Model Validation](https://executecommands.com/blazor-editform-model-validation-aspnetcore-5/)
@@ -333,5 +339,5 @@ Go to Page 2
 
 #### `'a' tag` 
 ```html
-<a href="/counter" target="blank"></a>
+<a href="/counter" target="_blank"></a>
 ```
