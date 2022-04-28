@@ -9,6 +9,7 @@
 - [Parameter](#parameter-)
 - [Validation](#validation-)
 - [Javascript](#javascript-)
+- [NPM](#npm-)
 - [Components](#components-)
 - [Navigate](#navigate-)
 
@@ -311,6 +312,11 @@ Go to Page 2
 
 ## Javascript [🔝](#blazor)
 - [JavaScript 함수 호출](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/javascript-interoperability/call-javascript-from-dotnet?view=aspnetcore-6.0)
+
+<br>
+
+## NPM [🔝](#blazor)
+- [Using NPM Packages in Blazor](https://brianlagunas.com/using-npm-packages-in-blazor/)
 
 <br>
 
