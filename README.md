@@ -12,6 +12,7 @@
 - [NPM](#npm-)
 - [Components](#components-)
 - [Navigate](#navigate-)
+- [Syntax](#syntax-)
 
 <br>
 
@@ -347,5 +348,14 @@ Go to Page 2
 #### `'a' tag` 
 ```html
 <a href="/counter" target="_blank"></a>
+```
+
+<br>
+
+## Syntax [🔝](#blazor)
+- [Use ternary operator in razor](https://stackoverflow.com/questions/4091831/how-to-use-ternary-operator-in-razor-specifically-on-html-attributes)
+
+```razor
+<a class="@(User.Identity.IsAuthenticated ? "auth" : "anon")">My link here</a>
 ```
 
