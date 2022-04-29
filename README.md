@@ -358,4 +358,3 @@ Go to Page 2
 ```razor
 <a class="@(User.Identity.IsAuthenticated ? "auth" : "anon")">My link here</a>
 ```
-
