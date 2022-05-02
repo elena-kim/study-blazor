@@ -330,6 +330,49 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 - [Blazor form validation](https://www.pragimtech.com/blog/blazor/blazor-form-validation/)
 - [How to use Blazor EditForm for Model Validation](https://executecommands.com/blazor-editform-model-validation-aspnetcore-5/)
  
+    #### Add Validation and Error Messages
+    ```csharp
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    
+    namespace BlazorEditFormSample.Data
+    {
+        public class Person
+        {
+            public int Id { get; set; }
+            
+            [Required(ErrorMessage = "Name Field is required")]
+            public string Name { get; set; }
+
+            [EmailAddress(ErrorMessage = "유효한 이메일 형식이 아닙니다.")]
+            public string Email { get; set; }
+        }
+    }
+    ```
+    
+    #### EditForm 
+    ```razor
+    <EditForm Model="@Person" OnValidSubmit="Save">
+    
+        <DataAnnotationsValidator />
+        
+        <div class="row col-md-6">
+             <div class="form-item col-md-7">
+                <lable class="search-label">이름</lable>
+                <input class="input-text" @bind-value="@Person.Name"/>
+                <ValidationMessage For="@(()=>Person.Name)" />     
+            </div>
+            <div class="form-item col-md-7">
+                <lable class="search-label">이메일</lable>
+                <input class="input-text" @bind-value="@Person.Email"/>
+                <ValidationMessage For="@(()=>Person.Email)" />  
+            </div>
+            ...
+        </div>
+        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Save</MudButton>
+    </EditForm>
+    ```
+ 
 <br>
 
 ## Javascript [🔝](#blazor)
