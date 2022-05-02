@@ -272,28 +272,28 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 ## Route [🔝](#blazor)
 - [Pass Route Parameters between Blazor Pages](https://wellsb.com/csharp/aspnet/pass-route-parameters-between-blazor-pages)
 
-```razor
-<h2>First Page</h2>
-<input type="number" @bind="age" /><br />
-<a href="/page2/@age.ToString()" >
-Go to Page 2
-</a>
+    ```razor
+    <h2>First Page</h2>
+    <input type="number" @bind="age" /><br />
+    <a href="/page2/@age.ToString()" >
+    Go to Page 2
+    </a>
 
-@code {
-    int age = 0;
-}
-```
+    @code {
+        int age = 0;
+    }
+    ```
 
-```razor
-@page "/page2/{age}"
-<h2>Second Page</h2>
-<p>You are @Age years old.</p>
+    ```razor
+    @page "/page2/{age}"
+    <h2>Second Page</h2>
+    <p>You are @Age years old.</p>
 
-@code {
-    [Parameter]
-    public string Age { get; set; }
-}
-```
+    @code {
+        [Parameter]
+        public string Age { get; set; }
+    }
+    ```
 
 - [ASP.NET Core Blazor 라우팅 및 탐색](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/fundamentals/routing?view=aspnetcore-6.0)
  
@@ -303,26 +303,26 @@ Go to Page 2
 - [Blazor cascading values and parameters](https://www.pragimtech.com/blog/blazor/blazor-cascading-values-parameters/)
 - [ASP.NET Core Blazor 연계 값 및 매개 변수](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/components/cascading-values-and-parameters?view=aspnetcore-6.0)
 
-```razor
-<h1 style="@Style">Parent Component Text</h1>
+    ```razor
+    <h1 style="@Style">Parent Component Text</h1>
 
-<CascadingValue Value="@Style" Name="ColorStyle" IsFixed="true">
-    <ChildComponent></ChildComponent>
-</CascadingValue>
+    <CascadingValue Value="@Style" Name="ColorStyle" IsFixed="true">
+        <ChildComponent></ChildComponent>
+    </CascadingValue>
 
-@code {
-    public string Style { get; set; } = "color:red";
-}
-```
+    @code {
+        public string Style { get; set; } = "color:red";
+    }
+    ```
 
-```razor
-<h1 style="@ElementStyle">-Child Component Text</h1>
+    ```razor
+    <h1 style="@ElementStyle">-Child Component Text</h1>
 
-@code {
-    [CascadingParameter(Name = "ColorStyle")]
-    public string ElementStyle { get; set; }
-}
-```
+    @code {
+        [CascadingParameter(Name = "ColorStyle")]
+        public string ElementStyle { get; set; }
+    }
+    ```
 
 <br>
 
@@ -350,34 +350,34 @@ Go to Page 2
 ## Navigate [🔝](#blazor)
 - [Open a page in a new tab](https://docs.microsoft.com/en-us/answers/questions/217767/blazor-open-a-page-in-a-new-browser-tab-using-navi.html)
 
-#### `JSRuntime`
-```razor
-@inject IJSRuntime jsRuntime
+    #### `JSRuntime`
+    ```razor
+    @inject IJSRuntime jsRuntime
 
-<button @onclick="NavigateToNewTab">New Tab Navigation</button>
+    <button @onclick="NavigateToNewTab">New Tab Navigation</button>
 
-@code {
+    @code {
 
-    public async Task NavigateToNewTab()
-    {
-        string url = "/counter";
-        await jsRuntime.InvokeAsync<object>("open", url, "_blank");
+        public async Task NavigateToNewTab()
+        {
+            string url = "/counter";
+            await jsRuntime.InvokeAsync<object>("open", url, "_blank");
+        }
     }
-}
-```
+    ```
 
-#### `'a' tag` 
-```html
-<a href="/counter" target="_blank"></a>
-```
+    #### `'a' tag` 
+    ```html
+    <a href="/counter" target="_blank"></a>
+    ```
 
 <br>
 
 ## Syntax [🔝](#blazor)
 - [Use ternary operator in razor](https://stackoverflow.com/questions/4091831/how-to-use-ternary-operator-in-razor-specifically-on-html-attributes)
 
-```razor
-<a class="@(User.Identity.IsAuthenticated ? "auth" : "anon")">My link here</a>
-```
+    ```razor
+    <a class="@(User.Identity.IsAuthenticated ? "auth" : "anon")">My link here</a>
+    ```
 
 <br>
