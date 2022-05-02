@@ -302,7 +302,8 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 ## Parameter [🔝](#blazor)
 - [Blazor cascading values and parameters](https://www.pragimtech.com/blog/blazor/blazor-cascading-values-parameters/)
 - [ASP.NET Core Blazor 연계 값 및 매개 변수](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/components/cascading-values-and-parameters?view=aspnetcore-6.0)
-
+    
+    #### `ParentComponent.razor`
     ```razor
     <h1 style="@Style">Parent Component Text</h1>
 
@@ -314,7 +315,8 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
         public string Style { get; set; } = "color:red";
     }
     ```
-
+    
+    #### `ChildComponent.razor`
     ```razor
     <h1 style="@ElementStyle">-Child Component Text</h1>
 
