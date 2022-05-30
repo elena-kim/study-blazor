@@ -391,6 +391,81 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 ## Components [🔝](#blazor)
 - [Introduction To Templated Components In Blazor](https://www.c-sharpcorner.com/article/introduction-to-templated-components-in-blazor/)
 
+- Custom ToggleButton
+    #### `ToggleSwitch.razor`
+    ```razor
+    <style>
+        .input-toggle {
+            cursor: pointer;
+            position: relative;
+            height: 20px;
+            width: 40px;
+            -webkit-appearance: none;
+            background: darkgray;
+            outline: none;
+            border-radius: 15px;
+        }
+
+        .input-toggle:before {
+            cursor: pointer;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            transform: scale(0.85);
+            border-radius: 50%;
+            background: white;
+            transition: .3s;
+        }
+
+        .input-toggle:checked {
+            background: #1b6ec2;
+        }
+
+        .input-toggle:checked:before {
+            left: 20px;
+        }
+    </style>
+
+    <input class="input-toggle" type="checkbox" @bind="Value" />
+
+    @code {
+        [Parameter]
+        public EventCallback<bool> ValueChanged { get; set; }
+
+        private bool _value;
+        [Parameter]
+        public bool Value
+        {
+            get { return _value; }
+            set
+            {
+                if(_value != value)
+                {
+                    _value = value;
+                    ValueChanged.InvokeAsync(_value);
+                }
+            }
+        }
+    }
+    ```
+    
+    #### `Index.razor`
+    ```razor
+    <ToggleSwitch Value="@context.EmailConfirmed" ValueChanged="@((bool e) => ConfirmedChanged(e, context.Id))"/>
+    
+    @code {
+        private void ConfirmedChanged(bool useYN, string id)
+        {
+            var user = LabC.db.Users.Where(x => x.Id == id).SingleOrDefault();
+            user.EmailConfirmed = useYN;
+            LabC.db.SaveChanges();
+        }
+    }
+    ```
+
 <br>
 
 ## Navigate [🔝](#blazor)
