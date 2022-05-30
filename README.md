@@ -492,6 +492,31 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
     <a href="/counter" target="_blank"></a>
     ```
 
+- [NavigationManager Cheatsheet](https://stackoverflow.com/questions/50102726/get-current-url-in-a-blazor-component/53448294#53448294)
+    ```razor
+    @inject NavigationManager MyNavigationManager
+    ```
+
+    ```python
+    MyNavigationManager.Uri
+    #> https://localhost:5001/counter/3?q=hi
+
+    MyNavigationManager.BaseUri
+    #> https://localhost:5001/
+
+    MyNavigationManager.NavigateTo("http://new location")
+    #> Navigates to new location
+
+    MyNavigationManager.LocationChanged
+    #> An event that fires when the navigation location has changed.
+
+    MyNavigationManager.ToAbsoluteUri("pepe")
+    #> https://localhost:5001/pepe
+
+    MyNavigationManager.ToBaseRelativePath(MyNavigationManager.Uri)
+    #> counter/3?q=hi
+    ```
+
 <br>
 
 ## Syntax [🔝](#blazor)
