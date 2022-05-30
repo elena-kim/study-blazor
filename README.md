@@ -13,6 +13,7 @@
 - [Components](#components-)
 - [Navigate](#navigate-)
 - [Syntax](#syntax-)
+- [HttpContext](#httpcontext-)
 
 <br>
 
@@ -424,5 +425,10 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
     ```razor
     <a class="@(User.Identity.IsAuthenticated ? "auth" : "anon")">My link here</a>
     ```
+
+<br>
+
+## HttpContext [🔝](#blazor)
+- [Using the HttpContext in Blazor Server the right way](https://www.youtube.com/watch?v=Eh4xPgP5PsM)
 
 <br>
