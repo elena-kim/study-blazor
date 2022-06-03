@@ -554,7 +554,7 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
             }
 
             await using FileStream fs = new(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fs);
+            await file.OpenReadStream().CopyToAsync(fs);  // 
         }
     }
     ```
