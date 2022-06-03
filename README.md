@@ -554,9 +554,11 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
             }
 
             await using FileStream fs = new(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fs);  // 
+            await file.OpenReadStream().CopyToAsync(fs);  
         }
     }
     ```
     
+    > **OpenReadStream enforces a maximum size** in bytes of its Stream. Reading one file or multiple files **larger than 512,000 bytes (500 KB) results in an exception**. This limit prevents developers from accidentally reading large files into memory. The maxAllowedSize parameter of OpenReadStream can be used to specify a larger size if required up to a maximum supported size of 2 GB. <br><br>
+    > The 2 GB framework file size limit only applies to ASP.NET Core 5.0. **In ASP.NET Core 6.0 or later, the framework doesn't limit the maximum file size.**
 <br>
