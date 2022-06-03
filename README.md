@@ -570,5 +570,62 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 
 ## File Download [🔝](#blazor)
 - [ASP.NET Core Blazor 파일 다운로드](https://docs.microsoft.com/ko-kr/aspnet/core/blazor/file-downloads?view=aspnetcore-6.0)
+    
+    #### `Razor`
+    ```razor
+    @using System.IO
+    @inject IJSRuntime JS
+    @inject IWebHostEnvironment Env
+    
+    <div class="board">
+        @foreach (var file in boardFiles)
+        {
+            <button @onclick="(() => DownloadFileFromStream(file.BoardFiles))">
+                @file.Name
+            </button>
+        }
+    </div>
+    
+    @code {
+        private Stream GetFileStream(string path)
+        {
+            var data = File.ReadAllBytes(path);
+            var fileStream = new MemoryStream(data);
 
+            return fileStream;
+        }
+    
+        private async Task DownloadFileFromStream(Contents_Files file)
+        {
+            var folder = Path.Combine(Env.WebRootPath, "files");
+            var filePath = folder + $@"\{file.FileNameSave}";
+            var fileStream = GetFileStream(filePath);
+            var fileName = file.FileNameOrigin;
 
+            using var streamRef = new DotNetStreamReference(stream: fileStream);
+
+            await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+        }
+    }
+    ```
+    
+    #### `Javascript`
+    ```js
+    async function downloadFileFromStream(fileName, contentStreamReference) {
+    const arrayBuffer = await contentStreamReference.arrayBuffer();
+    const blob = new Blob([arrayBuffer]);
+    const url = URL.createObjectURL(blob);
+
+    triggerFileDownload(fileName, url);
+
+    URL.revokeObjectURL(url);
+    }
+
+    function triggerFileDownload(fileName, url) {
+        const anchorElement = document.createElement('a');
+        anchorElement.href = url;
+        anchorElement.download = fileName ?? '';
+        anchorElement.click();
+        anchorElement.remove();
+    }
+    ```
