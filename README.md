@@ -540,21 +540,25 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
     ```razor
     @inject IWebHostEnvironment Env
     
-    private async Task OnInputFileChanged(InputFileChangeEventArgs e)
-    {
-        foreach(var file in e.GetMultipleFiles())
+    <InputFile OnChange="@OnInputFileChanged" multiple />
+    
+    @code {
+        private async Task OnInputFileChanged(InputFileChangeEventArgs e)
         {
-            var newFileName = String.Concat(Convert.ToString(Guid.NewGuid()), Path.GetExtension(file.Name));
-            var folder = Path.Combine(Env.WebRootPath, "files");
-            var filePath = folder + $@"\{newFileName}";
-
-            if (!Directory.Exists(folder))
+            foreach(var file in e.GetMultipleFiles())
             {
-                Directory.CreateDirectory(folder);
-            }
+                var newFileName = String.Concat(Convert.ToString(Guid.NewGuid()), Path.GetExtension(file.Name));
+                var folder = Path.Combine(Env.WebRootPath, "files");
+                var filePath = folder + $@"\{newFileName}";
 
-            await using FileStream fs = new(filePath, FileMode.Create);
-            await file.OpenReadStream().CopyToAsync(fs);  
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                await using FileStream fs = new(filePath, FileMode.Create);
+                await file.OpenReadStream().CopyToAsync(fs);  
+            }
         }
     }
     ```
