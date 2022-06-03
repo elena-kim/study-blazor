@@ -612,13 +612,13 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
     #### `Javascript`
     ```js
     async function downloadFileFromStream(fileName, contentStreamReference) {
-    const arrayBuffer = await contentStreamReference.arrayBuffer();
-    const blob = new Blob([arrayBuffer]);
-    const url = URL.createObjectURL(blob);
+        const arrayBuffer = await contentStreamReference.arrayBuffer();
+        const blob = new Blob([arrayBuffer]);
+        const url = URL.createObjectURL(blob);
 
-    triggerFileDownload(fileName, url);
+        triggerFileDownload(fileName, url);
 
-    URL.revokeObjectURL(url);
+        URL.revokeObjectURL(url);
     }
 
     function triggerFileDownload(fileName, url) {
