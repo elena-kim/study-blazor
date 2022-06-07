@@ -639,5 +639,14 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 
 ## Blazor Server Disconnected [🔝](#blazor)
 
+- [large amount of contents cause blazor to disconnect](https://github.com/tinymce/tinymce-blazor/issues/8)
 
+#### `Program.cs`
+```csharp
+builder.Services.AddServerSideBlazor().AddHubOptions(o =>
+{
+    o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
+});
+```
 
+> base64가 포함된 이미지 문자열이 있을 때 Blazor 서버 연결이 끊기는 경우가 발생함.
