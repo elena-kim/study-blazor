@@ -17,6 +17,9 @@
 - [File Upload](#file-upload-)
 - [File Download](#file-download-)
 
+### `Error`
+- [Blazor Server Disconnected](#blazor-server-disconnected-)
+
 <br>
 
 ## MudBlazor
@@ -629,4 +632,12 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
         anchorElement.remove();
     }
     ```
+
+<br>
+
+***
+
+## Blazor Server Disconnected [🔝](#blazor)
+
+
 
