@@ -643,6 +643,7 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 
 #### `Program.cs`
 ```csharp
+// .NET 6.0
 builder.Services.AddServerSideBlazor().AddHubOptions(o =>
 {
     o.MaximumReceiveMessageSize = 10 * 1024 * 1024; // 10MB
