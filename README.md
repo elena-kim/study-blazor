@@ -19,6 +19,7 @@
 
 ### `Error`
 - [Blazor Server Disconnected](#blazor-server-disconnected-)
+- [Unhandled exception on the current circuit](#unhandled-exception-on-the-current-circuit-)
 
 <br>
 
@@ -651,3 +652,15 @@ builder.Services.AddServerSideBlazor().AddHubOptions(o =>
 ```
 
 > base64가 포함된 이미지 문자열이 있을 때 Blazor 서버 연결이 끊기는 경우가 발생함.
+
+## Unhandled exception on the current circuit [🔝](#blazor)
+
+- [Unhandled exception on the current circuit](https://www.syncfusion.com/faq/blazor/error-handling/how-do-i-resolve-the-error-there-was-an-unhandled-exception-on-the-current-circuit-so-this-circuit-will-be-terminated-for-more-information-turn-on-detailed-exceptions-in-circuitoptions-detaileder)
+
+> There was an unhandled exception on the current circuit, so this circuit will be terminated. For more information, turn on detailed exceptions in ‘CircuitOptions.DetailedErrors’.
+
+#### `Program.cs`
+```csharp
+// .NET 6.0
+builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
+```
