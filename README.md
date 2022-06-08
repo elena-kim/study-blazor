@@ -653,6 +653,8 @@ builder.Services.AddServerSideBlazor().AddHubOptions(o =>
 
 > base64가 포함된 이미지 문자열이 있을 때 Blazor 서버 연결이 끊기는 경우가 발생함.
 
+<br>
+
 ## Unhandled exception on the current circuit [🔝](#blazor)
 
 - [Unhandled exception on the current circuit](https://www.syncfusion.com/faq/blazor/error-handling/how-do-i-resolve-the-error-there-was-an-unhandled-exception-on-the-current-circuit-so-this-circuit-will-be-terminated-for-more-information-turn-on-detailed-exceptions-in-circuitoptions-detaileder)
