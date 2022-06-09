@@ -666,3 +666,4 @@ builder.Services.AddServerSideBlazor().AddHubOptions(o =>
 // .NET 6.0
 builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
 ```
+
