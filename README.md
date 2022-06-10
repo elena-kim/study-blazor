@@ -395,6 +395,8 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
 <br>
 
 ## Components [🔝](#blazor)
+- [Top 10 nice free Blazor components](https://medium.com/@alexandre.malavasi/top-10-nice-free-blazor-components-b42875e56b28)
+
 - [Introduction To Templated Components In Blazor](https://www.c-sharpcorner.com/article/introduction-to-templated-components-in-blazor/)
 
 - Custom ToggleButton
