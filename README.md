@@ -16,6 +16,7 @@
 - [HttpContext](#httpcontext-)
 - [File Upload](#file-upload-)
 - [File Download](#file-download-)
+- [Life Cycle](#life-cycle-)
 
 ### `Error`
 - [Blazor Server Disconnected](#blazor-server-disconnected-)
@@ -635,6 +636,14 @@ Modal을 호출하기 위해서는 `IModalService`를 inject 해줘야 합니다
         anchorElement.remove();
     }
     ```
+
+<br>
+
+## Life Cycle [🔝](#blazor)
+- [Understanding AddTransient Vs AddScoped Vs AddSingleton In ASP.NET Core](https://www.c-sharpcorner.com/article/understanding-addtransient-vs-addscoped-vs-addsingleton-in-asp-net-core/)
+
+    ![image](https://user-images.githubusercontent.com/74305823/176608772-49d4a0d6-72d4-4802-a5e4-aca5e05563dd.png)
+
 
 <br>
 
