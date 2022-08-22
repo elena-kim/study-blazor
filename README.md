@@ -101,9 +101,9 @@ builder.Services.AddMudServices();
 
 ## BlazoredModal [🔝](#blazor)
 
-![image](https://user-images.githubusercontent.com/74305823/162673011-bbc021e7-914d-48c2-ac87-c373df727981.png)
+[BlazoredModal GitHub](https://github.com/Blazored/Modal)
 
-- [BlazoredModal GitHub](https://github.com/Blazored/Modal)
+![image](https://user-images.githubusercontent.com/74305823/162673011-bbc021e7-914d-48c2-ac87-c373df727981.png)
 
 ## Getting Started
 > Blazor Server 앱 기준
